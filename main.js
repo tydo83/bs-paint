@@ -49,6 +49,9 @@ while (count <= gridWidth * gridWidth) {
 // Add queries for all your squares, palette colors, and brush here.
 // (Note the singular or plural used in that sentence!)
 
+const palette = document.querySelectorAll(".palette-color")
+const brush = document.querySelector(".current-brush")
+const canvas = document.querySelectorAll(".square")
 
 
 /****************************
@@ -60,6 +63,19 @@ while (count <= gridWidth * gridWidth) {
 // empty at first, though a console.log just to know they're being
 // run as event listeners (after the next step is set up) isn't a
 // bad idea for testing purposes.
+
+for(const color of palette) {
+    color.addEventListener('click', (event) => {
+      const clickedColor = event.target
+      brush.classList.replace(brush.classList[1], clickedColor.classList[1])
+    }
+  )}
+
+for(const square of canvas) {
+  square.addEventListener('click', (event) => {
+      event.target.classList.replace(event.target.classList[1], brush.classList[1])
+    })
+  }
 
 
 
